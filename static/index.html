@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Graph</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css">
+    <style>
+        #network {
+            width: 100%;
+            height: 600px;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Knowledge Graph Application</h1>
+    <div>
+        <label>First Entity:</label>
+        <input type="text" id="entity1">
+    </div>
+    <div>
+        <label>Relationship:</label>
+        <input type="text" id="relationship">
+    </div>
+    <div>
+        <label>Second Entity:</label>
+        <input type="text" id="entity2">
+    </div>
+    <button onclick="addRelationship()">Add Relationship</button>
+    <div>
+        <label>Query Entity:</label>
+        <input type="text" id="queryEntity">
+        <button onclick="queryGraph()">Query</button>
+    </div>
+    <div id="network"></div>
+
+    <script>
+        const networkContainer = document.getElementById('network');
+        const nodes = new vis.DataSet([]);
+        const edges = new vis.DataSet([]);
+        const networkData = {
+            nodes: nodes,
+            edges: edges
+        };
+        const networkOptions = {};
+        const network = new vis.Network(networkContainer, networkData, networkOptions);
+
+        function addRelationship() {
+            const entity1 = document.getElementById('entity1').value;
+            const relationship = document.getElementById('relationship').value;
+            const entity2 = document.getElementById('entity2').value;
+
+            fetch('/add_relationship', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ entity1, relationship, entity2 })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);  // Log the response to verify
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    // Check if nodes already exist before adding
+                    if (!nodes.get(entity1)) {
+                        nodes.add({ id: entity1, label: entity1 });
+                    }
+                    if (!nodes.get(entity2)) {
+                        nodes.add({ id: entity2, label: entity2 });
+                    }
+                    edges.add({ from: entity1, to: entity2, label: relationship });
+
+                    // Refresh the network visualization
+                    network.setData({ nodes: nodes, edges: edges });
+                }
+            });
+        }
+
+
+
+
+        function queryGraph() {
+            const entity = document.getElementById('queryEntity').value;
+
+            fetch(`/query?entity=${entity}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    const { entity, relationships } = data;
+                    nodes.clear();
+                    edges.clear();
+                    nodes.add({ id: entity, label: entity });
+
+                    relationships.forEach(rel => {
+                        nodes.add({ id: rel.entity, label: rel.entity });
+                        if (rel.direction === 'outgoing') {
+                            edges.add({ from: entity, to: rel.entity, label: rel.relationship });
+                        } else if (rel.direction === 'incoming') {
+                            edges.add({ from: rel.entity, to: entity, label: rel.relationship });
+                        }
+                    });
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
