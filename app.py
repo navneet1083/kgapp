@@ -32,6 +32,9 @@ def query_graph():
     if not entity:
         return jsonify({'error': 'Missing required field: entity'}), 400
 
+    if entity not in graph:
+        return jsonify({'error': f'Entity "{entity}" not found in the graph'}), 404
+
     response = {'entity': entity, 'relationships': []}
 
     # Outgoing edges
