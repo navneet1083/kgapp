@@ -73,35 +73,37 @@ python app.py
 - Home Page:
   - Description: The initial view when the application is accessed.
 
+<br/>
+
 <img src="resources/home_page.png" alt="Home Page" width="300" height="200"/>
 <br/>
 
 - Adding a Relationship:
   - Description: Adding a relationship between entities using the input fields.
 
-<img src="/Users/navneetsingh/Library/Mobile Documents/com~apple~CloudDocs/Work/GitHub-Repos/personal_repos/bits_NLPA_Assign/kgapp/resources/add_relationships.png" alt="Adding a Relationship" width="300" height="200"/>
+<img src="resources/add_relationships.png" alt="Adding a Relationship" width="300" height="200"/>
 <br/>
 
 - Graph Visualization:
   - Description: Visualization of the knowledge graph after adding relationships
 
-<img src="/Users/navneetsingh/Library/Mobile Documents/com~apple~CloudDocs/Work/GitHub-Repos/personal_repos/bits_NLPA_Assign/kgapp/resources/knowledge_graph.png" alt="Knowledge Graph" width="300" height="200"/>
+<img src="resources/knowledge_graph.png" alt="Knowledge Graph" width="300" height="200"/>
 <br/>
 
 - Querying an Entity
   - Description: Querying an entity to see its relationships
 
-<img src="/Users/navneetsingh/Library/Mobile Documents/com~apple~CloudDocs/Work/GitHub-Repos/personal_repos/bits_NLPA_Assign/kgapp/resources/query_1.png" alt="Query Entity 1" width="300" height="200"/>
+<img src="resources/query_1.png" alt="Query Entity 1" width="300" height="200"/>
 <br/>
 
 
-<img src="/Users/navneetsingh/Library/Mobile Documents/com~apple~CloudDocs/Work/GitHub-Repos/personal_repos/bits_NLPA_Assign/kgapp/resources/query_2.png" alt="Query Entity 2" width="300" height="200"/>
+<img src="resources/query_2.png" alt="Query Entity 2" width="300" height="200"/>
 <br/>
 
 - Error Handling
   - Description: Alert displayed when an error occurs, such as query a non-existent entity.
 
-<img src="/Users/navneetsingh/Library/Mobile Documents/com~apple~CloudDocs/Work/GitHub-Repos/personal_repos/bits_NLPA_Assign/kgapp/resources/error.png" alt="Error" width="300" height="200"/>
+<img src="resources/error.png" alt="Error" width="300" height="200"/>
 <br/>
 
 
