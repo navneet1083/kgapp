@@ -73,37 +73,35 @@ python app.py
 - Home Page:
   - Description: The initial view when the application is accessed.
 
-<br/>
-
-<img src="resources/home_page.png" alt="Home Page" width="300" height="200"/>
+<img src="resources/home_page.png" alt="Home Page"/>
 <br/>
 
 - Adding a Relationship:
   - Description: Adding a relationship between entities using the input fields.
 
-<img src="resources/add_relationships.png" alt="Adding a Relationship" width="300" height="200"/>
+<img src="resources/add_relationships.png" alt="Adding a Relationship"/>
 <br/>
 
 - Graph Visualization:
   - Description: Visualization of the knowledge graph after adding relationships
 
-<img src="resources/knowledge_graph.png" alt="Knowledge Graph" width="300" height="200"/>
+<img src="resources/knowledge_graph.png" alt="Knowledge Graph"/>
 <br/>
 
 - Querying an Entity
   - Description: Querying an entity to see its relationships
 
-<img src="resources/query_1.png" alt="Query Entity 1" width="300" height="200"/>
+<img src="resources/query_1.png" alt="Query Entity 1"/>
 <br/>
 
 
-<img src="resources/query_2.png" alt="Query Entity 2" width="300" height="200"/>
+<img src="resources/query_2.png" alt="Query Entity 2"/>
 <br/>
 
 - Error Handling
   - Description: Alert displayed when an error occurs, such as query a non-existent entity.
 
-<img src="resources/error.png" alt="Error" width="300" height="200"/>
+<img src="resources/error.png" alt="Error"/>
 <br/>
 
 
